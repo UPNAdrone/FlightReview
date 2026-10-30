@@ -2,6 +2,34 @@
 
 Desktop app to convert and review PX4 **ULog** flight logs: Overview, time-series plots, parameters comparison, GPS map, and a shared time cursor / interval.
 
+Load multiple logs side by side, scrub a global time cursor, and focus on a selected interval across Overview, Map, Battery, and the other analysis tabs.
+
+## Screenshots
+
+### Overview — side-by-side flight summary
+
+Quick facts, mode timeline, and events / failsafes for two flights at once.
+
+![Overview comparing two flight logs](examples/overview.png)
+
+### Map — GPS path comparison
+
+Split Map panes with basemap tiles, flight path, and current-position marker synced to the global timeline.
+
+![Map comparison of two GPS flight paths](examples/map_comparison.png)
+
+### Battery — curated telemetry with event overlays
+
+Voltage, current, and remaining / discharged plots; optional event markers (takeoff, failsafe, landed).
+
+![Battery tab with two logs and event overlays](examples/battery.png)
+
+### Parameters — diff across loaded logs
+
+Searchable parameter table; differing values are highlighted.
+
+![Parameter comparison between two logs](examples/param_comparison.png)
+
 ---
 
 ## Choose how to install
@@ -142,6 +170,7 @@ GitHub Actions workflow: `.github/workflows/build-installers.yml` (runs on `v*` 
 ├── requirements-map.txt    # optional map deps (source)
 ├── run.sh / run.bat        # source launchers
 ├── packaging/              # PyInstaller + .deb / Windows installer scripts
+├── examples/               # README screenshots
 ├── flight-review-logo.png
 └── README.md
 ```
