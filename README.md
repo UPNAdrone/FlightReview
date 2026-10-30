@@ -4,11 +4,27 @@ Desktop app to convert and review PX4 **ULog** flight logs: Overview, time-serie
 
 Load multiple logs side by side, scrub a global time cursor, and focus on a selected interval across Overview, Map, Battery, and the other analysis tabs.
 
+## Key features
+
+- **Side-by-side multi-log comparison**: split panes so multiple flights can be reviewed together in Overview, Map, Battery, and other tabs
+- **Per-pane log selection**: each pane can show a different converted log while sharing the same time controls
+- **Global time cursor**: one scrubber drives plot cursors and the Map current-position marker together
+- **Interval start / end / reset**: focus plots, filter Overview facts/events, and highlight the in-interval GPS path without re-exporting CSVs
+- **Relative flight time**: minutes from each log’s own start, suited to A/B flight comparison
+- **Overview tab**: quick facts, flight-mode timeline, and arm / failsafe / land events (default landing view)
+- **Event overlays on plots**: optional takeoff / failsafe / landed markers on time-series charts
+- **Curated analysis tabs**: Vibrations, Battery, and Radio with sensible PX4 field sets
+- **Position & GPS Map**: local trajectory plots plus basemap path with start / end / current markers synced to global time
+- **Parameters diff**: searchable cross-log parameter table with differing values highlighted
+- **Custom Data Plots**: plot any topic/fields with a scrollable multi-subplot layout
+- **Fully local workflow**: Browse → Convert ULog → analyze on the desktop; no account or server required
+- **Easy installs**: run from source, or use packaged Ubuntu `.deb` / Windows installers (Map included in packaged builds)
+
 ## Screenshots
 
 ### Overview — side-by-side flight summary
 
-Quick facts, mode timeline, and events / failsafes for two flights at once.
+Quick facts, mode timeline, and events / failsafes for multiple flights at once.
 
 ![Overview comparing two flight logs](examples/overview.png)
 
