@@ -1,0 +1,46 @@
+# Virtual environments
+.venv/
+venv/
+env/
+ulog/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist_py/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local convert / runtime cache
+csv_output/
+
+# PyInstaller / packaging output (rebuild with packaging/ scripts)
+build/
+dist/
+*.spec.bak
+deb_root/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+*.code-workspace
+
+# Flight logs & large binaries (ship via GitHub Releases, not git)
+*.ulg
+*.ULG
+*.deb
+*.exe
+*.zip
+*.AppImage
+
+# Generated Windows icon (created during Windows packaging)
+flight-review-logo.ico

@@ -1,0 +1,9 @@
+# Core dependencies for running UPNAdrone from source
+pandas>=2.0
+numpy>=1.24
+matplotlib>=3.7
+pyulog>=1.2
+
+# Optional map basemap support (GPS Map tab).
+# Install with:  pip install -r requirements-map.txt
+# The app runs without these; the Map tab shows an install hint instead.

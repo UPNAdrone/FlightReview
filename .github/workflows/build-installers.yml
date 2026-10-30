@@ -1,0 +1,75 @@
+name: Build installers
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ["v*"]
+
+env:
+  APP_VERSION: "1.0.0"
+
+jobs:
+  windows:
+    name: Windows Setup.exe
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Inno Setup
+        run: choco install innosetup -y
+
+      - name: Build
+        shell: pwsh
+        run: |
+          $env:APP_VERSION = "${{ env.APP_VERSION }}"
+          if ($env:GITHUB_REF_TYPE -eq "tag") {
+            $env:APP_VERSION = $env:GITHUB_REF_NAME.TrimStart("v")
+          }
+          ./packaging/build_windows.ps1
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: UPNAdrone-Log-Viewer-windows
+          path: |
+            dist/UPNAdrone-Log-Viewer-*-windows-setup.exe
+            dist/UPNAdrone-Log-Viewer-*-windows-portable.zip
+
+  ubuntu:
+    name: Ubuntu .deb
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: System GUI / packaging deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            python3-tk \
+            libtk8.6 \
+            dpkg-dev \
+            binutils \
+            xvfb
+
+      - name: Build .deb
+        run: |
+          export APP_VERSION="${{ env.APP_VERSION }}"
+          if [ "${GITHUB_REF_TYPE}" = "tag" ]; then
+            export APP_VERSION="${GITHUB_REF_NAME#v}"
+          fi
+          chmod +x packaging/build_linux.sh
+          ./packaging/build_linux.sh
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: UPNAdrone-Log-Viewer-ubuntu
+          path: dist/upnadrone_*.deb

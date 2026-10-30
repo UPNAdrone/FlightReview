@@ -1,0 +1,5 @@
+# Optional GPS map basemap (contextily + geopandas).
+# Larger download; only needed for tiled Map views.
+-r requirements.txt
+contextily>=1.4
+geopandas>=0.14
